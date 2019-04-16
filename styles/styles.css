@@ -2,7 +2,7 @@ html {
     font-size: 14px;
 }
 
-.nav {
+.blog-masthead {
     background-color : #b34848;
 }
 
@@ -19,3 +19,9 @@ html {
     color: #b34848;
 }
 
+.row {
+    display: flex !important;
+}
+.blog-post {
+   width: 70%;
+}
