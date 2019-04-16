@@ -25,3 +25,11 @@ html {
 .blog-post {
    width: 70%;
 }
+
+.hidden {
+    display: none;
+}
+
+.red-listing {
+    color: #b34848;
+}

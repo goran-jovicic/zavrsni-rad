@@ -59,7 +59,6 @@
     <h2 class="blog-post-title"><a href="single-post.php?post_id=<?php echo($singlePost['id']) ?>"><?php echo($singlePost['title']) ?></a></h2>
     <p class="blog-post-meta"><?php echo($singlePost['created_at']) ?> by <?php echo($singlePost['author']) ?></p>
     <p><?php echo($singlePost['body']) ?></p>
-    <button type="button" class="btn btn-default">Hide comments</button>
     <div class="comments">
         <h3>Comments</h3>
         <?php
@@ -76,7 +75,7 @@
             foreach ($comments as $comment) {
         ?>
 
-        <ul>
+        <ul class="comment-list">
         <li class="single-comment">
             <div>posted by: <?php echo $comment['author'] ?></div>
             <div> <?php echo $comment['text'] ?> </div>
@@ -84,6 +83,7 @@
         <hr>
         <?php } ?>
         </ul>
+        <button type="button" class="btn btn-default" id="comments-button" onclick = "hideComments()">Hide comments</button>
     </div>
 </div>
        <?php include 'php/sidebar.php'?>
@@ -93,4 +93,5 @@
 </main><!-- /.container -->
   <?php include "php/footer.php" ?>
 </body>
+<script src="script.js"></script>
 </html>
