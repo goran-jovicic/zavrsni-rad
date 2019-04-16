@@ -33,4 +33,5 @@
 
 <?php include 'php/footer.php'?>
 </body>
+<script src="script.js"></script>
 </html>

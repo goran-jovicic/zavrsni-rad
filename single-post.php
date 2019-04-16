@@ -55,43 +55,42 @@
 
 
    ?>
-   <div class="blog-post">
-       <h2 class="blog-post-title"><a href="single-post.php?post_id=<?php echo($singlePost['id']) ?>"><?php echo($singlePost['title']) ?></a></h2>
-       <p class="blog-post-meta"><?php echo($singlePost['created_at']) ?> by <?php echo($singlePost['author']) ?></p>
-       <p><?php echo($singlePost['body']) ?></p>
-       <div class="comments">
-           <h3>Comments</h3>
-           <?php
-           $sqlComments =
-               "SELECT * FROM comments WHERE comments.post_id = {$_GET['post_id']}";
-               "SELECT * FROM comments JOIN users ON comments.user_id = users.id WHERE comments.post_id = {$_GET['post_id']}";
+<div class="blog-post">
+    <h2 class="blog-post-title"><a href="single-post.php?post_id=<?php echo($singlePost['id']) ?>"><?php echo($singlePost['title']) ?></a></h2>
+    <p class="blog-post-meta"><?php echo($singlePost['created_at']) ?> by <?php echo($singlePost['author']) ?></p>
+    <p><?php echo($singlePost['body']) ?></p>
+    <button type="button" class="btn btn-default">Hide comments</button>
+    <div class="comments">
+        <h3>Comments</h3>
+        <?php
+        $sqlComments =
+            "SELECT * FROM comments WHERE comments.post_id = {$_GET['post_id']}";
+            "SELECT * FROM comments JOIN users ON comments.user_id = users.id WHERE comments.post_id = {$_GET['post_id']}";
 
-               $statement = $connection->prepare($sqlComments);
-               $statement->execute();
+            $statement = $connection->prepare($sqlComments);
+            $statement->execute();
 
-               $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
 
-               $comments = $statement->fetchAll();
-               foreach ($comments as $comment) {
-           ?>
+            $comments = $statement->fetchAll();
+            foreach ($comments as $comment) {
+        ?>
 
-           <ul>
-           <li class="single-comment">
-                <div>posted by: <?php echo $comment['author'] ?></div>
-               <div> <?php echo $comment['text'] ?> </div>
-           </li>
-           <?php } ?>
-           </ul>
-       </div>
-   </div>
+        <ul>
+        <li class="single-comment">
+            <div>posted by: <?php echo $comment['author'] ?></div>
+            <div> <?php echo $comment['text'] ?> </div>
+        </li>
+        <hr>
+        <?php } ?>
+        </ul>
+    </div>
+</div>
        <?php include 'php/sidebar.php'?>
 
    </div><!-- /.row -->
 
 </main><!-- /.container -->
-
-<footer class="blog-footer">
   <?php include "php/footer.php" ?>
-</footer>
 </body>
 </html>
