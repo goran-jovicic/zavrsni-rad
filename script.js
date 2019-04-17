@@ -12,3 +12,6 @@ function hideComments(){
 }
 
 
+let deleteButton = document.getElementById("delete-post-button");
+let post 
+console.log(deleteButton);

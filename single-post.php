@@ -60,6 +60,10 @@
     <p class="blog-post-meta"><?php echo($singlePost['created_at']) ?> by <?php echo($singlePost['author']) ?></p>
     <p><?php echo($singlePost['body']) ?></p>
     <div class="comments">
+    <form>
+    <input class="btn btn-default" type="submit" value="Delete Post" onclick="deleteWarning()"/ id="delete-post-button">
+    </form>
+    <br>
         <h3>Comments</h3>
         <?php
         $sqlComments =
