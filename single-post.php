@@ -72,13 +72,38 @@
             $statement->setFetchMode(PDO::FETCH_ASSOC);
 
             $comments = $statement->fetchAll();
+        ?>
+        <?php
+               $error = '';
+               if ($_SERVER["REQUEST_METHOD"] === 'GET' && !empty($_GET['error'])) {
+                   $error = 'All fields are required!';
+               }
+        ?>
+    <form method="POST" action="create-comment.php"> 
+        <input type="text" name="author" class="author" placeholder="Your name here" id="author">
+        <?php if (!empty($error)) {?>
+            <span class="alert alert-danger">
+                <?php echo $error; ?>
+            </span>
+        <?php } ?>
+        <textarea placeholder="Add comment" rows="5" cols="100" class="textarea" name="comment"></textarea>
+        <input type="hidden" value="<?php echo $_GET['post_id']; ?>" name="id"/>
+        <input class="btn btn-default" type="submit" value="Submit">
+    </form>
+        <?php
             foreach ($comments as $comment) {
         ?>
-
-        <ul class="comment-list">
+    <!-- <form method="POST" action="create-comment.php"> 
+        <input type="text" name="author" class="author" placeholder="Your name here" id="author">
+        <textarea placeholder="Add comment" rows="5" cols="100" class="textarea"></textarea>
+        <input type="submit" name="submit-comment">
+    </form> -->
+        <ul>
         <li class="single-comment">
             <div>posted by: <?php echo $comment['author'] ?></div>
             <div> <?php echo $comment['text'] ?> </div>
+            <input class="btn btn-default" type="submit" value="Delete">
+            <input type="hidden" value="<?php echo $comment['id']; ?>" name="comment-id">
         </li>
         <hr>
         <?php } ?>

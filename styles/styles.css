@@ -33,3 +33,16 @@ html {
 .red-listing {
     color: #b34848;
 }
+
+.list-unstyled {
+    display:block;
+    color: #b34848;
+}
+
+.author {
+    margin: 0.5rem, 0rem, 0.5rem, 0rem;
+}
+
+.textarea {
+    margin-top: 0.5rem;
+}
