@@ -1,5 +1,5 @@
 let button = document.getElementById("comments-button");
-let comments = document.querySelector('.comment-list');
+let comments = document.querySelector('.single-comment');
 
 function hideComments(){
     if (button.innerHTML == 'Show comments'){

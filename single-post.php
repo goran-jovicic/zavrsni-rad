@@ -93,17 +93,15 @@
         <?php
             foreach ($comments as $comment) {
         ?>
-    <!-- <form method="POST" action="create-comment.php"> 
-        <input type="text" name="author" class="author" placeholder="Your name here" id="author">
-        <textarea placeholder="Add comment" rows="5" cols="100" class="textarea"></textarea>
-        <input type="submit" name="submit-comment">
-    </form> -->
         <ul>
         <li class="single-comment">
             <div>posted by: <?php echo $comment['author'] ?></div>
             <div> <?php echo $comment['text'] ?> </div>
-            <input class="btn btn-default" type="submit" value="Delete">
-            <input type="hidden" value="<?php echo $comment['id']; ?>" name="comment-id">
+            <form method="GET" action="delete-comment.php" >
+                <input class="btn btn-default" type="submit" value="Delete">
+                <input type="hidden" value="<?php echo $comment['id']; ?>" name="id"/>
+                <input type="hidden" value="<?php echo $comment['post_id']; ?>" name="post_id"/>
+            </form>
         </li>
         <hr>
         <?php } ?>
