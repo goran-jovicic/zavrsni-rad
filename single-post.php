@@ -55,7 +55,7 @@
 
 
    ?>
-<div class="blog-post">
+<div class="blog-post" style="margin-left: 1rem;">
     <h2 class="blog-post-title"><a href="single-post.php?post_id=<?php echo($singlePost['id']) ?>"><?php echo($singlePost['title']) ?></a></h2>
     <p class="blog-post-meta"><?php echo($singlePost['created_at']) ?> by <?php echo($singlePost['author']) ?></p>
     <p><?php echo($singlePost['body']) ?></p>
@@ -95,12 +95,12 @@
         <input type="hidden" value="<?php echo $_GET['post_id']; ?>" name="id"/>
         <input class="btn btn-default" type="submit" value="Submit">
     </form>
+    <ul>
         <?php
             foreach ($comments as $comment) {
         ?>
-        <ul>
-        <li class="single-comment">
-            <div>posted by: <?php echo $comment['author'] ?></div>
+        <li class="single-comment" style="margin-left: 1rem">
+            <div><p style="color:#b34848"><?php echo $comment['author'] ?></p></div>
             <div> <?php echo $comment['text'] ?> </div>
             <form method="GET" action="delete-comment.php" >
                 <input class="btn btn-default" type="submit" value="Delete">
