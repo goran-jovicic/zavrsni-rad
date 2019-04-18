@@ -60,8 +60,9 @@
     <p class="blog-post-meta"><?php echo($singlePost['created_at']) ?> by <?php echo($singlePost['author']) ?></p>
     <p><?php echo($singlePost['body']) ?></p>
     <div class="comments">
-    <form>
-    <input class="btn btn-default" type="submit" value="Delete Post" onclick="deleteWarning()"/ id="delete-post-button">
+    <form method="GET" action="delete-post.php" name="deletePostForm">
+    <input class="btn btn-default" type="submit" value="Delete Post" id="delete-post-button" >
+    <input type="hidden" value="<?php echo $singlePost['id']; ?>" name="id"/>
     </form>
     <br>
         <h3>Comments</h3>

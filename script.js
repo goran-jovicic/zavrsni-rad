@@ -12,6 +12,9 @@ function hideComments(){
 }
 
 
-let deleteButton = document.getElementById("delete-post-button");
-let post 
-console.log(deleteButton);
+document.getElementById("delete-post-button").addEventListener('click', function(event) {
+    event.preventDefault();
+    if(window.confirm("Do you really want to delete this post?")) {
+        document.deletePostForm.submit();
+    }
+})
